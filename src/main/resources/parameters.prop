@@ -1,0 +1,18 @@
+#Thu Sep 12 18:02:57 UTC 2024
+Cc=
+CSRF\ Protected=true
+Address=https\://my301857-api.s4hana.ondemand.com/sap/opu/odata/sap/API_SALES_ORDER_SRV
+Credential\ Name=s4hc_oh7_0109
+From=doctecnica78@gmail.com
+Proxy\ Type=default
+Reuse\ Connection=true
+Timeout\ (in\ ms)=30000
+Subject=Integra\u00E7\u00E3o InterfaceOrdens Falhou
+Credencial\ Name=gmail_credencials
+Authentication=Basic
+MethodAutentication=loginPlain
+ProxyType=none
+To=everton.mazzer@sap.com
+AddressGmail=
+Protection=starttls_mandatory
+AdressGmail=smtp.gmail.com\:587
