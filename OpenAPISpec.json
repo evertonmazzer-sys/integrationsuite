@@ -1,0 +1,259 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1",
+    "title": "Orders API",
+    "description": "This API provides resources for working with orders"
+  },
+  "paths": {
+    "/Orders": {
+      "x-swagger-router-controller": "orders_ctrl",
+      "post": {
+        "parameters": [
+          {
+            "name": "CustomerName",
+            "description": "The name of the customer",
+            "in": "query",
+            "required": true,
+            "example": "HighTech Sports Inc.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CustomerID",
+            "description": "The ID of the customer",
+            "in": "query",
+            "required": true,
+            "example": "17100004",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ProductID",
+            "description": "The product ID",
+            "in": "query",
+            "required": true,
+            "example": "MZ-TG-ZAD01",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Quantity",
+            "description": "The amount of products",
+            "in": "query",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Price",
+            "description": "The price of the product",
+            "in": "query",
+            "required": true,
+            "example": "1000",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderReference",
+            "description": "The order reference is a combination of your Student User-ID + unique number like ACxxxxxxUyy-001 ACxxxxxxUyy-002 ACxxxxxxUyy-003 ...",
+            "in": "query",
+            "required": true,
+            "example": "ACxxxxxxUyy-***",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "MaintenanceStartDate",
+            "description": "The start date of the maintenance contract",
+            "in": "query",
+            "required": true,
+            "example": "25.02.2025",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "MaintenanceEndDate",
+            "description": "The end date of the maintenance contract",
+            "in": "query",
+            "required": true,
+            "example": "31.12.2025",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "MaintenanceServiceLevel",
+            "description": "The service level of the maintenance contract",
+            "in": "query",
+            "required": true,
+            "example": "Premium",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Creates an order \n",
+        "operationId": "write_order",
+        "requestBody": {
+          "required": true,
+          "description": "New entity",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/orderResponse"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/orderResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "parameters": [
+          {
+            "name": "CustomerName",
+            "description": "The name of the customer",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "CustomerID",
+            "description": "The id of the customer",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ProductID",
+            "description": "The distribution channel of order",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Searches for an order \n",
+        "operationId": "read_order",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/orderResponse"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+  },
+  "servers": [
+    {
+      "url": "https://integration-suite-us10.it-cpi019-rt.cfapps.us10-002.hana.ondemand.com/http/Orders_AC231770U00"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "orderResponse": {
+        "type":"object",
+        "properties": {
+          "CustomerName": {
+            "type": "string",
+            "description": "The name of the business partner"
+          },
+          "CustomerID": {
+            "type": "string",
+            "description": "The ID of the business partner"
+          },
+          "ProductID": {
+            "description": "The ID of the product",
+            "type": "string"
+          },
+          "Quantity": {
+            "description": "Order Quantity",
+            "type": "string"
+          },
+          "Price": {
+            "description": "Price of the product",
+            "type": "string"
+          },
+          "OrderReference": {
+            "description": "The order reference is a combination of your Student User-ID + unique number like ACxxxxxxUyy-001 ACxxxxxxUyy-002 ACxxxxxxUyy-003 ...",
+            "type": "string"
+          },
+          "MaintenanceStartDate": {
+            "description": "Start Date of the maintenance contract",
+            "type": "string"
+          },
+          "MaintenanceEndDate": {
+            "description": "End Date of the maintenance contract",
+            "type": "string"
+          },
+          "MaintenanceServiceLevel": {
+            "description": "Service Level of the maintenance contract",
+            "type": "string"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
